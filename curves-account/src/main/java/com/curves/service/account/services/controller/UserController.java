@@ -1,11 +1,15 @@
 package com.curves.service.account.services.controller;
 
+import com.curves.service.account.services.dto.UserQuery;
 import com.curves.service.account.services.pojo.dto.UserDTO;
 import com.curves.service.account.services.pojo.entity.UserEntity;
 import com.curves.service.account.services.service.IUserService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import io.swagger.annotations.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,12 +17,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
+ * 用户对象Controller
  * @author vic
  */
 @RestController
 @RequestMapping("/account")
 @Api(value = "MainController", description = "Account接口描述")
 public class UserController {
+
     @Autowired
     IUserService iUserService;
 
@@ -36,11 +42,12 @@ public class UserController {
     @ApiOperation(value = "分页查询", httpMethod = "GET", notes = "分页查询")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "path", dataType = "Long", name = "pageNum", value = "页数", required = true),
-            @ApiImplicitParam(paramType = "path", dataType = "Long", name = "pageSize", value = "每页数据条数", required = true)
+            @ApiImplicitParam(paramType = "path", dataType = "Long", name = "pageSize", value = "每页数据条数", required = true),
+            @ApiImplicitParam(paramType = "path", dataType = "UserQuery", name = "userQuery", value = "数据对象", required = true)
     })
-    public PageInfo<UserEntity> selectUserByPage(@PathVariable("pageNum") int pageNum, @PathVariable("pageSize") int pageSize) {
+    public PageInfo<UserEntity> selectUserByPage(@PathVariable("pageNum") int pageNum, @PathVariable("pageSize") int pageSize, @RequestBody UserQuery userQuery) {
         PageHelper.startPage(pageNum, pageSize);
-        List<UserEntity> usersDoList = iUserService.selectUsersByPage();
+        List<UserEntity> usersDoList = iUserService.selectUsersByPage(userQuery);
         PageInfo<UserEntity> pageInfo = new PageInfo<>(usersDoList);
         return pageInfo;
     }
@@ -56,7 +63,7 @@ public class UserController {
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "body", dataType = "UserDTO", name = "record", value = "用户对象", required = true)
     })
-    public int insert(@RequestBody UserDTO record) {
+    public int save(@RequestBody UserDTO record) {
         UserEntity usersDo = modelMapper.map(record, UserEntity.class);
         return iUserService.insert(usersDo);
     }

@@ -1,5 +1,6 @@
 package com.curves.service.account.services.service.impl;
 
+import com.curves.service.account.services.dto.UserQuery;
 import com.curves.service.account.services.mapper.UsersMapper;
 import com.curves.service.account.services.pojo.entity.UserEntity;
 import com.curves.service.account.services.service.IUserService;
@@ -21,11 +22,12 @@ public class IUserServiceImpl implements IUserService {
 
     /**
      * 分页查询
+     * @param userQuery 用户查询对象
      * @return List<UsersDo> 分页结果
      */
     @Override
-    public List<UserEntity> selectUsersByPage() {
-        return usersMapper.selectUsersByPage();
+    public List<UserEntity> selectUsersByPage(UserQuery userQuery) {
+        return usersMapper.selectUsersByPage(userQuery);
     }
 
     /**

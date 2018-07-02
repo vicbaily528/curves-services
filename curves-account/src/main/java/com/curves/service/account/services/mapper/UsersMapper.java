@@ -1,5 +1,6 @@
 package com.curves.service.account.services.mapper;
 
+import com.curves.service.account.services.dto.UserQuery;
 import com.curves.service.account.services.pojo.entity.UserEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -16,9 +17,10 @@ public interface UsersMapper {
 
     /**
      * 分页查询
-     * @return
+     * @param userQuery 用户查询对象
+     * @return List<UserEntity> 用户对象列表
      */
-    List<UserEntity> selectUsersByPage();
+    List<UserEntity> selectUsersByPage(UserQuery userQuery);
 
     /**
      * 根据主键删除数据

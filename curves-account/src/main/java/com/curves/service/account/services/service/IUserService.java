@@ -1,5 +1,6 @@
 package com.curves.service.account.services.service;
 
+import com.curves.service.account.services.dto.UserQuery;
 import com.curves.service.account.services.pojo.entity.UserEntity;
 
 import java.util.List;
@@ -12,7 +13,7 @@ public interface IUserService {
      * 分页查询
      * @return
      */
-    List<UserEntity> selectUsersByPage();
+    List<UserEntity> selectUsersByPage(UserQuery userQuery);
 
     /**
      * 根据主键删除数据
