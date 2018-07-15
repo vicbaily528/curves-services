@@ -1,4 +1,4 @@
-package com.curves.service.account.services.dto;
+package com.curves.service.account.services.pojo.vo;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

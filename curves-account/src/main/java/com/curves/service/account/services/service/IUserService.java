@@ -1,6 +1,6 @@
 package com.curves.service.account.services.service;
 
-import com.curves.service.account.services.dto.UserQuery;
+import com.curves.service.account.services.pojo.vo.UserQuery;
 import com.curves.service.account.services.pojo.entity.UserEntity;
 
 import java.util.List;

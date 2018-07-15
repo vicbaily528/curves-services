@@ -5,9 +5,9 @@
   <!-- DO映射表 -->
   <resultMap id="BaseResultMap" type="com.curves.service.account.services.pojo.entity.UserEntity">
     <id column="uuid" jdbcType="VARCHAR" property="uuid" />
-    <result column="username" jdbcType="VARCHAR" property="username" />
-    <result column="userpass" jdbcType="VARCHAR" property="userpass" />
-    <result column="userage" jdbcType="INTEGER" property="userage" />
+    <result column="user_name" jdbcType="VARCHAR" property="username" />
+    <result column="user_pass" jdbcType="VARCHAR" property="userpass" />
+    <result column="user_age" jdbcType="INTEGER" property="userage" />
     <result column="dept_uuid" jdbcType="VARCHAR" property="deptUuid" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="email" jdbcType="VARCHAR" property="email" />
@@ -21,12 +21,12 @@
 
   <!-- 分页查询 -->
   <select id="selectUsersByPage" resultMap="BaseResultMap">
-    select <include refid="Base_Column_List"/> from users
+    select <include refid="Base_Column_List"/> from account_user
   </select>
 
   <!-- 新增对象信息 -->
-  <insert id="insertSelective" parameterType="com.curves.service.account.services.pojo.entity.UserEntity">
-    insert into users
+  <insert id="insert" parameterType="com.curves.service.account.services.pojo.entity.UserEntity">
+    insert into account_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="uuid != null">
         uuid,
@@ -85,13 +85,13 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from users
+    from account_user
     where uuid = #{uuid}
   </select>
 
   <!-- 更新对象信息 -->
   <update id="updateByPrimaryKey" parameterType="com.curves.service.account.services.pojo.entity.UserEntity">
-    update users
+    update account_user
     <set>
       <if test="username != null">
         username = #{username},
@@ -120,13 +120,13 @@
 
   <!-- 通过主键删除 -->
   <delete id="deleteByPrimaryKey">
-    delete from users
+    delete from account_user
     where uuid = #{uuid}
   </delete>
 
   <!-- 批量删除 -->
   <delete id="deleteByPrimaryKeys">
-    delete from users
+    delete from account_user
     <where>
       uuid in
       <foreach collection="array" item="arr" index="no" open="(" separator="," close=")">

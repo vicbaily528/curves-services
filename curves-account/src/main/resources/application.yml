@@ -5,7 +5,7 @@ spring:
     name: curves-account
   datasource:
     name: test
-    url: jdbc:mysql://127.0.0.1:3306/curves-account?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://127.0.0.1:3306/curves_user?useUnicode=true&characterEncoding=utf-8
     username: root
     password: 1qaz@WSX
     type: com.alibaba.druid.pool.DruidDataSource

@@ -1,6 +1,6 @@
 package com.curves.service.account.services.mapper;
 
-import com.curves.service.account.services.dto.UserQuery;
+import com.curves.service.account.services.pojo.vo.UserQuery;
 import com.curves.service.account.services.pojo.entity.UserEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

@@ -1,6 +1,6 @@
 package com.curves.service.account.services.controller;
 
-import com.curves.service.account.services.dto.UserQuery;
+import com.curves.service.account.services.pojo.vo.UserQuery;
 import com.curves.service.account.services.pojo.dto.UserDTO;
 import com.curves.service.account.services.pojo.entity.UserEntity;
 import com.curves.service.account.services.service.IUserService;
